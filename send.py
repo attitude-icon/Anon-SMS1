@@ -1,4 +1,9 @@
 #!/usr/bin/env python
+import threading
+import string
+import base64
+import urllib.request
+import urllib.parse
 import os
 import time
 import sys
