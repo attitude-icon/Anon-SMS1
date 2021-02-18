@@ -151,7 +151,7 @@ elif type == 0:
 			'message' : text ,
 			'key' : 'textbelt'
 		})
-		
+		break
 		print(resp.json())
 		if '"success" : true ' in resp.text:
 		    print("\033[92m Message Sent Succesfully \033[0m")
