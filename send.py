@@ -151,8 +151,9 @@ elif type == 0:
 			'message' : text ,
 			'key' : 'textbelt'
 		})
-		break
+		
 		print(resp.json())
+                break
 		if '"success" : true ' in resp.text:
 		    print("\033[92m Message Sent Succesfully \033[0m")
 		    input('\n\t\tPress Enter To Exit...')
@@ -164,3 +165,4 @@ elif type == 0:
 		    input('\n\t\tPress Enter To Exit...')
 		    banner()
 		    exit()
+                 exit() 
