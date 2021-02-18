@@ -81,7 +81,7 @@ def update():
 clr()
 banner()
 try:
-    urllib.request.urlopen('https://www.henryhacks.blogspot.com')
+    urllib.request.urlopen('https://www.google.com')
 except Exception:
     print("Error While Connecting To Internet!!!")
     print("\tPlease Connect To Internet To Continue...\n")
