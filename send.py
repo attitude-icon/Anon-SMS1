@@ -57,7 +57,7 @@ def banner():
                                          """
     print(logo)
     print("\n")
-    print("\033[0mThis Tool Is Used To Send Anonymous Messages")
+    
 
 def Track() :
   TXTID = input("Enter Text ID of Anon-SMS \n\t -->>")
@@ -100,36 +100,18 @@ if ver != verl:
     update()
 print("Congratulation")
 print("Your Version is Up-To-Date")
-print('\n\tStarting Anon-SMS...\n\n')
+print('\n\tStarting Anon-SMS...\n')
 try:
     noti = urllib.request.urlopen("https://raw.githubusercontent.com/Attitude-icon/Anon-SMS1/master/.notify").read().decode('utf-8')
     if len(noti) > 10:
-        print('\n\tNotification : ' + noti + '\n\n')
+        print('\nNotification : ' + noti + '\n\n')
 except Exception:
     pass
     
     
     
 while True:
-	print("Enter The Details Of The Person You Want To Send Anonymous Message")
-	cc = input("\tEnter Country Code (Without +) : ")
-	if '+' in cc:
-	        tc = list(cc)
-	        tc.remove('+')
-	        cc = ''.join(tc)
-	        cc = cc.strip()
-	if len(cc) >= 4 or len(cc) < 1:
-	        print('\n\nInvalid Country Code..\n\t\tCountry Codes Are Generally 1-3 digits...\n')
-	        continue
-	pn = input("Enter Phone Number : +" + cc + " ")
-	if len(pn) <= 6:
-	        print('\n\nInvalid Phone Number..\n')
-	        continue
-	numbe = cc + pn
-	if not numbe.isdigit():
-	            print('\n\nPhone Number Must Consist Of Numbers Only\n')
-	            continue
-	receiver = '+' + numbe
+	print("\033[0mThis Tool Is Used To Send Anonymous Messages")
 	break
 type = 0
 try:
@@ -141,24 +123,44 @@ if type == 1:
 	print("Track The Anonymous Message You Sent Using This Tool.")
 	print()
 	Track()
-elif type == 0:	
-	text = input("Enter Message to send : ")
-	
-	resp = requests.post('https://textbelt.com/text',{
-		'phone' : receiver,
-		'message' : text ,
-		'key' : 'textbelt'
-	})
-	
-	print(resp.json())
-	if '"success" : true ' in resp.text:
-	    print("\033[92m Message Sent Succesfully \033[0m")
-	    input('\n\t\tPress Enter To Exit...')
-	    banner()
-	    exit()
-	if '"success" : false ' in resp.text:
-	    print("\033[91m Error Occured")
-	    print("\033[91m Failed to send SMS! ")
-	    input('\n\t\tPress Enter To Exit...')
-	    banner()
-	    exit()
+elif type == 0:
+	while True:
+		print("Enter The Details Of The Person You Want To Send Anonymous Message")
+		cc = input("\tEnter Country Code (Without +) : ")
+		if '+' in cc:
+		        tc = list(cc)
+		        tc.remove('+')
+		        cc = ''.join(tc)
+		        cc = cc.strip()
+		if len(cc) >= 4 or len(cc) < 1:
+		        print('\n\nInvalid Country Code..\n\t\tCountry Codes Are Generally 1-3 digits...\n')
+		        continue
+		pn = input("Enter Phone Number : +" + cc + " ")
+		if len(pn) <= 6:
+		        print('\n\nInvalid Phone Number..\n')
+		        continue
+		numbe = cc + pn
+		if not numbe.isdigit():
+		            print('\n\nPhone Number Must Consist Of Numbers Only\n')
+		            continue
+		receiver = '+' + numbe
+		text = input("Enter Message to send : ")
+		
+		resp = requests.post('https://textbelt.com/text',{
+			'phone' : receiver,
+			'message' : text ,
+			'key' : 'textbelt'
+		})
+		
+		print(resp.json())
+		if '"success" : true ' in resp.text:
+		    print("\033[92m Message Sent Succesfully \033[0m")
+		    input('\n\t\tPress Enter To Exit...')
+		    banner()
+		    exit()
+		if '"success" : false ' in resp.text:
+		    print("\033[91m Error Occured")
+		    print("\033[91m Failed to send SMS! ")
+		    input('\n\t\tPress Enter To Exit...')
+		    banner()
+		    exit()
