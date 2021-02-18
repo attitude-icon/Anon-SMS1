@@ -76,13 +76,6 @@ def update():
 
 clr()
 banner()
-try:
-    urllib.request.urlopen('https://www.google.com')
-except Exception:
-    print("Error While Connecting To Internet!!!")
-    print("\tPlease Connect To Internet To Continue...\n")
-    input('Exiting....\n Press Enter To Exit....')
-    exit()
 print('\tChecking For Updates...')
 ver = urllib.request.urlopen(
     "https://raw.githubusercontent.com/HACK3RY2J/Anon-SMS/master/.version").read().decode('utf-8')
